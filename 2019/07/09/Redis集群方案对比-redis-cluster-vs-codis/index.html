@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hyper">
 <meta property="og:description" content="简介与架构实现1. codis Codis是基于proxy架构的redis集群方案。 Codis是一整套缓存解决方案，包含高可用、数据分片、监控、动态扩态  客户端的请求会先发送到proxy，由proxy做sharding后转发到后端redis实例。这个sharding的规则（常称之为路由表、转发表、slot表等）保存在集中化的组件（比如zookeeper、文件系统等）上，然后由Dashboard">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-09T06:31:03.638Z">
+<meta property="og:updated_time" content="2019-08-07T08:38:55.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis集群方案对比(redis cluster vs codis)">
 <meta name="twitter:description" content="简介与架构实现1. codis Codis是基于proxy架构的redis集群方案。 Codis是一整套缓存解决方案，包含高可用、数据分片、监控、动态扩态  客户端的请求会先发送到proxy，由proxy做sharding后转发到后端redis实例。这个sharding的规则（常称之为路由表、转发表、slot表等）保存在集中化的组件（比如zookeeper、文件系统等）上，然后由Dashboard">
@@ -193,7 +193,9 @@ Scale in/out是指可以动态的添加或删除集群中的节点，来水平�
 它和纵向扩缩容（Scale up/down）是相对的。
 由于nosql是没有schema的，一般都是简单的kv结构（或者是kkv结构），因此做Scale in/out还是相对而言比较容易的。
 因为key是按照slot为单位进行sharding的（常见公式有：crc16(key) % slot_num）,
-因此只要将一个实例上的某些slots迁移到其它节点上，再把路由表（即slot和node的映射关系）更新即可。</code></pre><h3 id="1-节点加入集群"><a href="#1-节点加入集群" class="headerlink" title="1. 节点加入集群"></a>1. 节点加入集群</h3><h3 id="2-数据（slot-key）迁移"><a href="#2-数据（slot-key）迁移" class="headerlink" title="2. 数据（slot/key）迁移"></a>2. 数据（slot/key）迁移</h3><h4 id="2-1-迁移步骤"><a href="#2-1-迁移步骤" class="headerlink" title="2.1 迁移步骤"></a>2.1 迁移步骤</h4><ul>
+因此只要将一个实例上的某些slots迁移到其它节点上，再把路由表（即slot和node的映射关系）更新即可。</code></pre><a id="more"></a>
+
+<h3 id="1-节点加入集群"><a href="#1-节点加入集群" class="headerlink" title="1. 节点加入集群"></a>1. 节点加入集群</h3><h3 id="2-数据（slot-key）迁移"><a href="#2-数据（slot-key）迁移" class="headerlink" title="2. 数据（slot/key）迁移"></a>2. 数据（slot/key）迁移</h3><h4 id="2-1-迁移步骤"><a href="#2-1-迁移步骤" class="headerlink" title="2.1 迁移步骤"></a>2.1 迁移步骤</h4><ul>
 <li>第一步先获取这个slot下所有key</li>
 <li>然后对每个key发送迁移命令即可</li>
 </ul>
@@ -523,7 +525,7 @@ gitment.render('gitment-ctn')
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -632,7 +634,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">纸上得来终觉浅&lt;br&gt;&lt;br&gt;绝知此事要躬行</div>
   	  	
     	</section>
     
